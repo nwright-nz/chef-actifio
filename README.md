@@ -1,6 +1,6 @@
 # Actifio Chef Resources
 
-Custom resource to enable interaction with Actifio using Chef.   
+Custom resource to enable interaction with Actifio using Chef. Usual caveats: <b>use at your own risk!</b> Tested with SQL and Informix databases on Windows and Linux (specifically Suse Enteprise Linux)      
 At present, these resources will allow you to do the following :  
 * Authenticate to Actifio Sky Appliance (and receive a valid session ID back)
 * Check if a host exists
