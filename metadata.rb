@@ -1,4 +1,4 @@
-name 'actifio-chef'
+name 'actifio'
 maintainer 'Nigel Wright'
 maintainer_email 'nigel.wright@dimensiondata.com'
 license 'Apache-2.0'

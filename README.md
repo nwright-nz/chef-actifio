@@ -14,6 +14,9 @@ At present, these resources will allow you to do the following :
 Note that these resources require the Actifio user password and vendor key to be provided. These should not be stored in clear text (as seen in the examples below).
 
 ## Usage
+Add the below line to your cookbooks:
+`include_recipe 'actifio::default'`
+
 ### Login and Check host
 ```ruby
 act_login 'Auth to Actifio' do
@@ -111,7 +114,7 @@ act_mount do
   actifioHost node['actifio']['host']
 end
 ```
-For SQL server, we need to add more details. Specifically the parts we want to mount the restore options xml.
+For SQL server, we need to add more details.    Specifically the parts we want to mount and the restore options xml.
 
 
 
