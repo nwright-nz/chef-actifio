@@ -1,0 +1,36 @@
+#!/bin/sh
+
+###############################################
+# this script will ensure that the mount point
+# is pointing to a directory you specify in the
+# infromix.conf (DB_MOUNT=) file.
+###############################################
+
+
+dir_path=$(dirname $0)
+
+set -x
+DB_MOUNT='/db'
+# [ -f ${dir_path}/informix.conf ] && {
+#         . ${dir_path}/informix.conf
+#         export DB_MOUNT
+# } || {
+#         echo "ERROR: unable to find the configuration"
+#         exit 1
+# }
+
+case $ACT_PHASE in
+	post)
+		mount_point=$(mount | awk "\$1~/$ACT_JOBNAME/ { print \$3 }")
+	[ -z $mount_point ] && {
+		echo "Unable to find the mount point!!."
+	}
+
+	[ -d $DB_MOUNT ] || {
+		mkdir -p $DB_MOUNT
+	}
+	mount --bind $mount_point $DB_MOUNT
+	mp=$(mount | awk "\$1~/$ACT_JOBNAME/ { print \$1;exit }")
+	echo "$mp $DB_MOUNT  auto     noauto,x-systemd.automount 0,2" | sudo tee -a /etc/fstab
+	;;
+esac

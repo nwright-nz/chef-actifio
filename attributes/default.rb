@@ -1,0 +1,5 @@
+default['actifio']['endpoint'] = ''
+default['actifio']['username'] = ''
+default['actifio']['appid'] = ''
+default['actifio']['vendorkey'] = ''
+default['actifio']['password'] = ''
